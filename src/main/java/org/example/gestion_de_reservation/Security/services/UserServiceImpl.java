@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService {
         String hashedPWD = passwordEncoder.encode(password);// hasher le mdp
 
         User user = new User();
-        user.setId(Long.valueOf(UUID.randomUUID().toString())); //pour generer un id
+       // user.setId(Long.valueOf(UUID.randomUUID().toString())); //pour generer un id
         //UUID => genere des chaines de caractere aleatoire qui depend de la date systeme
         user.setNom(nom);
         user.setMail(mail);
@@ -43,6 +43,7 @@ public class UserServiceImpl implements UserService {
             return userMapper.ToUserDto(savedUser);
         }
         catch (Exception e) {
+            log.error("Erreur lors de la création de l'utilisateur : {}", e.getMessage(), e);
             throw new UserCreationException("Erreur lors de la création de l'utilisateur : " + e.getMessage());
 
         }

@@ -3,8 +3,8 @@ package org.example.gestion_de_reservation.dtos;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.example.gestion_de_reservation.entities.Evenement;
-import org.example.gestion_de_reservation.Security.entities.User;
+
+import java.util.UUID;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -14,4 +14,5 @@ public class ReservationDto {
     private Long userId;
     private Long evenementId;
     private int nbPlaceReserves;
+
 }

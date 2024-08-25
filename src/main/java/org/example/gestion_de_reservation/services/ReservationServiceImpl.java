@@ -15,6 +15,8 @@ import org.example.gestion_de_reservation.repositories.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 @NoArgsConstructor
@@ -32,7 +34,6 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     public ReservationDto addReservation(ReservationDto reservationDto) {
 
-        Reservation reservation = reservationMapper.ToReservationEntity(reservationDto);
 
         User user = userRepository.findById(reservationDto.getUserId())
                 .orElseThrow(() -> new UserNotFoundException("Utilisateur non trouvé"));
@@ -40,6 +41,7 @@ public class ReservationServiceImpl implements ReservationService {
         Evenement evenement = evenementRepository.findById(reservationDto.getEvenementId())
                 .orElseThrow(() -> new EvenementNotFoundException("Événement non trouvé"));
 
+        Reservation reservation = reservationMapper.ToReservationEntity(reservationDto,user,evenement);
 
         Reservation savedReservation = reservationRepository.save(reservation);
 
@@ -52,5 +54,11 @@ public class ReservationServiceImpl implements ReservationService {
         Reservation reservation = reservationRepository.findById(id).orElseThrow();
         reservation.getEvenement().setNbPlace(reservation.getEvenement().getNbPlace() + reservation.getNbPlaceReserves());
         reservationRepository.delete(reservation);
+    }
+
+    @Override
+    public List<ReservationDto> getAllReservations() {
+        List<Reservation> reservations = reservationRepository.findAll();
+        return reservationMapper.ToReservationDtoList(reservations);
     }
 }
