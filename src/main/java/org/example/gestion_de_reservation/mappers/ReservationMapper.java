@@ -39,9 +39,9 @@ public interface ReservationMapper {
         return reservation;
     }*/
 
-    //List<ReservationDto> ToReservationDtoList(List<Reservation> reservations);
+    List<ReservationDto> ToReservationDtoList(List<Reservation> reservations);
 
-    default  List<ReservationDto> ToReservationDtoList(List<Reservation> reservations) {
+   /* default  List<ReservationDto> ToReservationDtoList(List<Reservation> reservations) {
         List<ReservationDto> dtoList = new ArrayList<>();
         for (Reservation reservation : reservations) {
             ReservationDto dto = new ReservationDto();
@@ -59,5 +59,5 @@ public interface ReservationMapper {
             dtoList.add(dto);
         }
         return dtoList;
-    }
+    }*/
 }
