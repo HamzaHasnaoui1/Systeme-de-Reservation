@@ -10,24 +10,24 @@ import org.mapstruct.Mappings;
 @Mapper(componentModel = "spring")
 public interface PaiementMapper {
 
-    default PaiementDto ToPaiementDto(Paiement paiement){
+    @Mapping(source = "reservation.id", target = "reservationId")
+   PaiementDto ToPaiementDto(Paiement paiement);/*{
         PaiementDto paiementDto = new PaiementDto();
         paiementDto.setId(paiement.getId());
         paiementDto.setDescription(paiement.getDescription());
         paiementDto.setMontant(paiement.getMontant());
         paiementDto.setReservationId(paiement.getReservation().getId());
-        return paiementDto;
+        return paiementDto;*/
 
-    }
 
-//    @Mapping(source = "reservationId", target = "reservation")
-default Paiement ToPaiementEntity(PaiementDto paiementDto) {
+   @Mapping(source = "reservationId", target = "reservation.id")
+ Paiement ToPaiementEntity(PaiementDto paiementDto);/* {
        Paiement paiement = new Paiement();
        paiement.setId(paiementDto.getId());
        paiement.setDescription(paiementDto.getDescription());
        paiement.setMontant(paiementDto.getMontant());
 //       paiement.setReservationId(paiementDto.getReservation().getId());
        return paiement;
-   }
+   }*/
 
 }

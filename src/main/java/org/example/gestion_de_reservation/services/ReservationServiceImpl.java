@@ -41,7 +41,7 @@ public class ReservationServiceImpl implements ReservationService {
         Evenement evenement = evenementRepository.findById(reservationDto.getEvenementId())
                 .orElseThrow(() -> new EvenementNotFoundException("Événement non trouvé"));
 
-        Reservation reservation = reservationMapper.ToReservationEntity(reservationDto,user,evenement);
+        Reservation reservation = reservationMapper.ToReservationEntity(reservationDto);
 
         Reservation savedReservation = reservationRepository.save(reservation);
 

@@ -15,9 +15,9 @@ public class Config {
         http
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
-                                .anyRequest().permitAll() // Autoriser toutes les requêtes pour le test
+                                .anyRequest().permitAll()
                 )
-                .csrf().disable(); // Désactiver CSRF temporairement pour simplifier les tests
+                .csrf().disable();
 
         return http.build();
     }

@@ -13,31 +13,31 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface ReservationMapper {
-    /* @Mappings({
+     @Mappings({
              @Mapping(source = "user.id", target = "userId"),
              @Mapping(source = "evenement.id", target = "evenementId")
-     })*/
-    default ReservationDto ToReservationDto(Reservation reservation) {
+     })
+     ReservationDto ToReservationDto(Reservation reservation); /*{
         ReservationDto reservationDto = new ReservationDto();
         reservationDto.setId(reservation.getId());
         reservationDto.setUserId(reservation.getUser().getId());
         reservationDto.setEvenementId(reservation.getEvenement().getId());
         reservationDto.setNbPlaceReserves(reservation.getNbPlaceReserves());
         return reservationDto;
-    }
+    }*/
 
-    /*  @Mappings({
+      @Mappings({
               @Mapping(source = "userId", target = "user.id"),
               @Mapping(source = "evenementId", target = "evenement.id")
-      })*/
-    default Reservation ToReservationEntity(ReservationDto reservationDto, User user, Evenement evenement) {
+      })
+     Reservation ToReservationEntity(ReservationDto reservationDto);/* {
         Reservation reservation = new Reservation();
         reservation.setId(reservationDto.getId());
         reservation.setUser(user);
         reservation.setEvenement(evenement);
         reservation.setNbPlaceReserves(reservationDto.getNbPlaceReserves());
         return reservation;
-    }
+    }*/
 
     //List<ReservationDto> ToReservationDtoList(List<Reservation> reservations);
 
