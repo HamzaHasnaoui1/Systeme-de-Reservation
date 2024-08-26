@@ -48,6 +48,13 @@ public class ReservationServiceImpl implements ReservationService {
        return reservationMapper.ToReservationDto(savedReservation);
     }
 
+    @Override
+    public ReservationDto updateReservation(Long id ,ReservationDto reservationDto ) {
+        Reservation reservation = reservationRepository.findById(id).orElseThrow();
+        reservation.setNbPlaceReserves(reservationDto.getNbPlaceReserves());
+        Reservation updatedReservation = reservationRepository.save(reservation);
+        return reservationMapper.ToReservationDto(updatedReservation);
+    }
 
     @Override
     public void annulerReservation(Long id) {
