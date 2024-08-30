@@ -1,11 +1,15 @@
 package org.example.gestion_de_reservation.mappers;
 
+import org.example.gestion_de_reservation.dtos.EvenementDto;
 import org.example.gestion_de_reservation.dtos.PaiementDto;
+import org.example.gestion_de_reservation.entities.Evenement;
 import org.example.gestion_de_reservation.entities.Paiement;
 import org.example.gestion_de_reservation.entities.Reservation;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
+
+import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface PaiementMapper {
@@ -29,5 +33,6 @@ public interface PaiementMapper {
 //       paiement.setReservationId(paiementDto.getReservation().getId());
        return paiement;
    }*/
+    List<PaiementDto> ToPaiementDtoList(List<Paiement> paiements);
 
 }

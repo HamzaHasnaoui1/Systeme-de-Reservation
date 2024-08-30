@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/Evenemnet")
+@CrossOrigin("*")
 public class EvenementController {
     @Autowired
     private EvenementService evenementService;

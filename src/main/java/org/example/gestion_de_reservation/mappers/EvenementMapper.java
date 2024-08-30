@@ -9,7 +9,7 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface EvenementMapper {
-    @Mapping(source = "nom" , target = "nom")
+   // @Mapping(source = "nom" , target = "nom")
     EvenementDto ToEvenementDto(Evenement evenement);/*{
         EvenementDto evenementDto = new EvenementDto();
         evenementDto.setId(evenement.getId());

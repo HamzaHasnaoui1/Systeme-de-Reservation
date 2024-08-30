@@ -12,6 +12,8 @@ import org.example.gestion_de_reservation.repositories.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 @NoArgsConstructor
@@ -35,6 +37,12 @@ public class PaiementServiceImpl implements PaiementService{
         Paiement savedPaiement = paiementRepository.save(paiement);
 
         return paiementMapper.ToPaiementDto(savedPaiement);
+    }
+
+    @Override
+    public List<PaiementDto> getAllPaiements() {
+        List<Paiement> paiements = paiementRepository.findAll();
+        return paiementMapper.ToPaiementDtoList(paiements);
     }
 
 }
