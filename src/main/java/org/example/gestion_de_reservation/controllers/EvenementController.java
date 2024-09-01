@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Evenemnet")
+@RequestMapping("/Evenement")
 @CrossOrigin("*")
 public class EvenementController {
     @Autowired
@@ -35,5 +35,8 @@ public class EvenementController {
         return evenementService.listEvenement();
     }
 
-
+    @GetMapping("/getEvenementById/{id}")
+    public EvenementDto getEvenementById(@PathVariable Long id) {
+        return evenementService.getEvenementById(id);
+    }
 }

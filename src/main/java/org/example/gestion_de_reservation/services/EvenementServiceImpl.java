@@ -48,4 +48,11 @@ public class EvenementServiceImpl implements EvenementService{
         List<Evenement> evenements=evenementRepository.findAll();
         return evenementMapper.ToEvenementDtoList(evenements);
     }
+
+    @Override
+    public EvenementDto getEvenementById(Long id) {
+        Evenement evenement=evenementRepository.findById(id).orElseThrow();
+        return evenementMapper.ToEvenementDto(evenement);
+    }
+
 }

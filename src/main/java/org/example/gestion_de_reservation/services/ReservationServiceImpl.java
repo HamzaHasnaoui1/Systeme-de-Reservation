@@ -68,4 +68,10 @@ public class ReservationServiceImpl implements ReservationService {
         List<Reservation> reservations = reservationRepository.findAll();
         return reservationMapper.ToReservationDtoList(reservations);
     }
+
+    @Override
+    public ReservationDto getReservationById(Long id) {
+        Reservation reservation=reservationRepository.findById(id).orElseThrow();
+        return reservationMapper.ToReservationDto(reservation);
+    }
 }

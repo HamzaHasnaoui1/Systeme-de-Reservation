@@ -12,4 +12,6 @@ public interface EvenementService {
     void deleteEvenement(Long id);
 
     List<EvenementDto> listEvenement();
+
+    EvenementDto getEvenementById(Long id);
 }

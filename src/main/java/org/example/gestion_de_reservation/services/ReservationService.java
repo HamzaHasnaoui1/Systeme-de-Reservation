@@ -18,4 +18,6 @@ public interface ReservationService {
     void annulerReservation(Long id);
 
     List<ReservationDto> getAllReservations();
+
+    ReservationDto getReservationById(Long id);
 }

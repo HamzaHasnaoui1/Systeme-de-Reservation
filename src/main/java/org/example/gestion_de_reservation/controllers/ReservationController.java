@@ -36,4 +36,9 @@ public class ReservationController {
     public List<ReservationDto> getReservationList() {
         return reservationService.getAllReservations();
     }
+
+    @GetMapping("/getReservationById/{id}")
+    public ReservationDto getReservationById(@PathVariable Long id) {
+        return reservationService.getReservationById(id);
+    }
 }
