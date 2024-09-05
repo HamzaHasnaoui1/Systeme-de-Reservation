@@ -1,9 +1,7 @@
 package org.example.gestion_de_reservation.controllers;
 
-import org.example.gestion_de_reservation.Security.entities.User;
-import org.example.gestion_de_reservation.dtos.EvenementDto;
 import org.example.gestion_de_reservation.dtos.ReservationDto;
-import org.example.gestion_de_reservation.entities.Evenement;
+import org.example.gestion_de_reservation.entities.Reservation;
 import org.example.gestion_de_reservation.services.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -40,5 +38,13 @@ public class ReservationController {
     @GetMapping("/getReservationById/{id}")
     public ReservationDto getReservationById(@PathVariable Long id) {
         return reservationService.getReservationById(id);
+    }
+
+    @GetMapping("/pageOperations")
+    public List<Reservation> getReservations(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "5") int size) {
+
+        return reservationService.getReservations(page, size);
     }
 }

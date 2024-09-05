@@ -20,4 +20,6 @@ public interface ReservationService {
     List<ReservationDto> getAllReservations();
 
     ReservationDto getReservationById(Long id);
+
+    List<Reservation> getReservations(int page, int size);
 }

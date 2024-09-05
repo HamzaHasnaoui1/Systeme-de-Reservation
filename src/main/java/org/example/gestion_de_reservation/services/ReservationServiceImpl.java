@@ -13,6 +13,8 @@ import org.example.gestion_de_reservation.mappers.ReservationMapper;
 import org.example.gestion_de_reservation.repositories.EvenementRepository;
 import org.example.gestion_de_reservation.repositories.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -73,5 +75,11 @@ public class ReservationServiceImpl implements ReservationService {
     public ReservationDto getReservationById(Long id) {
         Reservation reservation=reservationRepository.findById(id).orElseThrow();
         return reservationMapper.ToReservationDto(reservation);
+    }
+
+    @Override
+    public List<Reservation> getReservations(int page, int size) {
+        Pageable pageable= PageRequest.of(page, size);
+        return reservationRepository.findAllByOrderByIdAsc( pageable);
     }
 }
